@@ -1,0 +1,181 @@
+<div class="text-explanation-area">
+  <div class="w-container form-container">
+    <div class="w-form contact-form-inputs">
+      <form id="email-form" action="/leads/talk-with-us/"  name="email-form" data-name="Email Form">{% csrf_token %}
+
+        {% if consulting %}
+        <div class="consulting-block">
+          <div class="w-row">
+            <div class="w-col w-col-6">
+              <label class="form-label" for="name">Corretor:</label>
+              <input class="w-input form-field required" id="consultor_name" type="text" placeholder="Consultor" name="consultor_name" data-name="Consultor">
+            </div>
+
+            <div class="w-col w-col-6">
+              <label class="form-label" for="email">Empreendimento:</label>
+              <select class="w-input form-field required" name="origin_contact" id="origin_contact">
+                <option value="Portal Arboretto">Portal Arboretto</option>
+                <option value="Portal Primavera">Portal Primavera</option>
+                <option value="Portal Cores da Vida">Portal Cores da Vida</option>
+              </select>
+            </div>
+          </div>
+          <input type="hidden" name="custom_page" value="corretor">
+        </div>
+        {% else %}
+          <input type="hidden" name="origin_contact" value="{{ contact_origin }}">
+          <input type="hidden" name="custom_page" value="pagina">
+        {% endif %}
+
+
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <label class="form-label" for="name">Nome:</label>
+            <input class="w-input form-field required" id="name" type="text" placeholder="Digite seu nome" name="name" data-name="Name">
+            <label class="form-label" for="email">E-mail:</label>
+            <input class="w-input form-field required" id="email" data-validate="email" type="text" placeholder="seu@email.com.br" name="email" data-name="Email">
+          </div>
+          <div class="w-col w-col-6">
+            <label class="form-label" for="telefone">Telefone:</label>
+            <input class="w-input form-field required phone" id="telefone" type="text" placeholder="Digite apenas números começando pelo DDD" name="phone" data-name="Telefone">
+            <label class="form-label" for="idade">Idade:</label>
+            <input class="w-input form-field required" id="idade" type="text" placeholder="Digite quantos anos tem" maxlength="2" name="age" data-name="Idade">
+          </div>
+        </div>
+        <div class="form-divider"></div>
+        <div class="w-row">
+          <div class="w-col w-col-3 required" data-group-checkbox="true">
+            <label class="form-label" for="email">Renda Familiar:</label>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="ate" type="radio" name="familiar_rent" value="Até R$ 1.800" data-name="Renda Familiar" >
+              <label class="w-form-label form-option" for="ate">Até R$ 1.800</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="1801-a" type="radio" name="familiar_rent" value="De R$ 1.801 a R$ 2.300" data-name="Renda Familiar" >
+              <label class="w-form-label form-option" for="1801-a">De R$ 1.801 a R$ 2.300</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="2301-a" type="radio" name="familiar_rent" value="De R$ 2.301 a R$ 2.800" data-name="Renda Familiar" >
+              <label class="w-form-label form-option" for="2301-a">De R$ 2.301 a R$ 2.800</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="2801-a" type="radio" name="familiar_rent" value="De R$ 2.801 a R$ 3.300" data-name="Renda Familiar" >
+              <label class="w-form-label form-option" for="2801-a">De R$ 2.801 a R$ 3.300</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="3301-a" type="radio" name="familiar_rent" value="De R$ 3.301 a R$ 5.000" data-name="Renda Familiar" >
+              <label class="w-form-label form-option" for="3301-a">De R$ 3.301 a R$ 5.000</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="mais-de" type="radio" name="familiar_rent" value="Mais de R$ 5.000" data-name="Renda Familiar" >
+              <label class="w-form-label form-option" for="mais-de">Mais de R$ 5.000</label>
+            </div>
+          </div>
+          <div class="w-col w-col-3 required" data-group-checkbox="true">
+            <label class="form-label" for="email">Estado Civil:</label>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="solteiro" type="radio" name="maritial_status" data-name="Estado Civil"  value="Solteiro">
+              <label class="w-form-label form-option" for="solteiro">Solteiro</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="casado" type="radio" name="maritial_status" data-name="Estado Civil"  value="Casado">
+              <label class="w-form-label form-option" for="casado">Casado</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="divorciado" type="radio" name="maritial_status" data-name="Estado Civil"  value="Divorciado">
+              <label class="w-form-label form-option" for="divorciado">Divorciado</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="viuvo" type="radio" name="maritial_status" data-name="Estado Civil"  value="Viúvo">
+              <label class="w-form-label form-option" for="viuvo">Viúvo</label>
+            </div>
+          </div>
+          <div class="required w-col w-col-3 required" data-group-checkbox="true">
+            <label class="form-label" for="email">escolaridade:</label>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="ensino-fundamental" type="radio" name="schooling" data-name="Escolaridade"  value="Ensino Fundamental">
+              <label class="w-form-label form-option" for="ensino-fundamental">Ensino fundamental</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="ensino-medio" type="radio" name="schooling" data-name="Escolaridade"  value="Ensino médio">
+              <label class="w-form-label form-option" for="ensino-medio">Ensino médio</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="ensino-superior" type="radio" name="schooling" data-name="Escolaridade"  value="Ensino superior">
+              <label class="w-form-label form-option" for="ensino-superior">Ensino superior</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="pos-graduacao" type="radio" name="schooling" data-name="Escolaridade"  value="Pós-graduação">
+              <label class="w-form-label form-option" for="pos-graduacao">Pós-graduação</label>
+            </div>
+          </div>
+          <div class="w-col w-col-3 required" data-group-checkbox="true">
+            <label class="form-label" for="email">tipo de residência:</label>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="cedida" type="radio" name="house_type" data-name="Tipo de Residência"  value="Cedida">
+              <label class="w-form-label form-option" for="cedida">Cedida</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="alugada" type="radio" name="house_type" data-name="Tipo de Residência"  value="Alugada">
+              <label class="w-form-label form-option" for="alugada">Alugada</label>
+            </div>
+            <div class="w-radio w-clearfix">
+              <input class="w-radio-input" id="propria" type="radio" name="house_type" data-name="Tipo de Residência"  value="Própria">
+              <label class="w-form-label form-option" for="propria">Própria</label>
+            </div>
+          </div>
+        </div>
+        <div class="w-clearfix form-divider secondary">
+          <div class="w-row">
+            <div class="w-col w-col-3 required" data-group-checkbox="true">
+              <label class="form-label" for="email">Perfil profissional:</label>
+              <div class="w-radio w-clearfix">
+                <input class="w-radio-input" id="autonomo" type="radio" name="professional_profile" data-name="Perfil Profissional"  value="Autônomo">
+                <label class="w-form-label form-option" for="autonomo">Autônomo</label>
+              </div>
+              <div class="w-radio w-clearfix">
+                <input class="w-radio-input" id="carteira-assinada" type="radio" name="professional_profile" data-name="Perfil Profissional"  value="Carteira Assinada">
+                <label class="w-form-label form-option" for="carteira-assinada">Carteira assinada</label>
+              </div>
+            </div>
+            <div class="w-col w-col-3 required" data-group-checkbox="true">
+              <label class="form-label" for="email">Possui fgts?</label>
+              <div class="w-radio w-clearfix">
+                <input class="w-radio-input" id="fgtsnao" type="radio" name="fgts" value="Não" data-name="fgts" >
+                <label class="w-form-label form-option" for="fgtsnao">Não</label>
+              </div>
+              <div class="w-radio w-clearfix">
+                <input class="w-radio-input" id="fgtssim" type="radio" name="fgts" value="Sim" data-name="fgts" >
+                <label class="w-form-label form-option" for="fgtssim">Sim</label>
+              </div>
+            </div>
+            <div class="w-col w-col-3 required" data-group-checkbox="true">
+              <label class="form-label" for="email">Possui Filhos?</label>
+              <div class="w-radio w-clearfix">
+                <input class="w-radio-input" id="nao" type="radio" name="has_child" value="Não" data-name="Possui Filhos" >
+                <label class="w-form-label form-option" for="nao">Não</label>
+              </div>
+              <div class="w-radio w-clearfix">
+                <input class="w-radio-input" id="sim" type="radio" name="has_child" value="Sim" data-name="Possui Filhos" >
+                <label class="w-form-label form-option" for="sim">Sim</label>
+              </div>
+            </div>
+            <div class="w-col w-col-3">
+              <label class="form-label" for="quantidade-de-filhos-2">Quantidade de filhos:</label>
+              <input class="w-input form-field" id="quantidade-de-filhos-2" maxlength="2" type="text" placeholder="Digite quantos filhos têm" name="child_number" data-name="Quantidade de filhos">
+            </div>
+            <div class="w-col w-col-3"></div>
+          </div>
+          <input class="w-button form-button" type="submit" data-send="Enviar Cadastro" value="Enviar Cadastro" data-wait="Aguarde" wait="Aguarde">
+        </div>
+      </form>
+      <div class="w-form-done send-email-success">
+        <p class="form-message-text">Envio de cadastro realizado com sucesso!
+          <br>Em breve, entraremos em contato com você por e-mail ou telefone.</p>
+      </div>
+      <div class="w-form-fail send-email-error">
+        <p class="form-message-text">Desculpe, mas algo saiu errado durante o envio. Por favor, tente novamente.</p>
+      </div>
+    </div>
+  </div>
+</div>
